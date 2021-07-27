@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="fafe9bc3-a5bc-4902-a6ed-75bef639cabe" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="simplehttpFlow" doc:id="00dd3088-5fb8-4457-ae1e-4ad2356a638d" >
+		<http:listener doc:name="Listener" doc:id="5c3defaa-de84-41cb-9e5f-1dfbd05444da" config-ref="HTTP_Listener_config" path="/verify"/>
+		<logger level="INFO" doc:name="Logger" doc:id="58ac11e3-a003-415e-9a9c-2a4a0416c430" message="Request recieved and sending response"/>
+		<ee:transform doc:name="Transform Message" doc:id="c2f72afe-972e-4cf0-9881-588578ae5dd2" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	'result':'success'
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
