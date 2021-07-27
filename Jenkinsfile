@@ -18,7 +18,7 @@ pipeline {
         stage('Docker') {
             steps {
                script {
-                sh 'docker cp /home/${USER}/helloApp/*.jar mule-cont:/opt/mule-enterprise-standalone-4.1.5/apps'   
+                sh 'docker cp /home/${USER}/helloApp/*.jar mule-cont:/opt/mule-enterprise-standalone-4.3.0/apps'   
                 }
             }
         }
