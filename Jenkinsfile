@@ -4,7 +4,9 @@ import groovy.json.*
  
 pipeline {
     agent any
- 
+ 	tools { 
+      maven 'MAVEN_HOME'
+    }
     stages {
         stage('Build Package') {
             steps {
