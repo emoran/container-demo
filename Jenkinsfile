@@ -5,7 +5,7 @@ import groovy.json.*
 pipeline {
     agent any
  	tools { 
-      maven 'MAVEN_HOME'
+      maven '/opt/twitter_mde/package/twitter_dev_homebrew/current/Cellar/maven/3.5.3/libexec'
     }
     stages {
         stage('Build Package') {
