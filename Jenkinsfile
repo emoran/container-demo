@@ -3,8 +3,10 @@ import hudson.plugins.ec2.*;
 import groovy.json.*
  
 pipeline {
-	agent any
-	stage('Build Package') {
+    agent any
+ 
+    stages {
+        stage('Build Package') {
             steps {
              
                script {
